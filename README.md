@@ -28,7 +28,7 @@ For Python library:
     ```
 3. sample result
 ```bash
-| node_id | target_id | minimum_distance
+| node_id | target_id | minimum_distance ( -1 : collision )
 VH_F_renal_pyramid_L_b | VH_F_renal_pyramid_L_c | 0.00581706732973548
 VH_F_renal_pyramid_L_b | VH_F_renal_pyramid_L_h | 0.033958358068466095
 VH_F_renal_pyramid_L_b | VH_F_renal_pyramid_L_i | 0.036266068238102786
