@@ -57,7 +57,7 @@ int main(int argc, char **argv)
     }
 
     // Write header to CSV file
-    outputFile << "Mesh A ID,Mesh B ID,Minimum Distance" << std::endl;
+    outputFile << "source, target, distance" << std::endl;
   
 
     std::vector<Mymesh> meshes;
