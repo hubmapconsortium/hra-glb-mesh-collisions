@@ -47,14 +47,6 @@ For C++ libraries:
     ```bash
     sudo apt install libeigen3-dev
     ```
-7. assimp
-    ```bash
-    sudo apt-get install libassimp-dev
-    ```
-8. cpprestsdk
-    ```bash
-    sudo apt-get install libcpprest-dev
-    ```
 
 ## Compilation
 
@@ -71,7 +63,7 @@ We use CMake to configure the program with third-party dependencies and generate
 ## Usage
 1. convert glb files of 3D models to off (Object File Format) files:
     ```bash
-    bash 
+    bash mesh-mesh-collisions.sh
     ```
 2. sample result
 ```bash
