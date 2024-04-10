@@ -56,7 +56,7 @@ We use CMake to configure the program with third-party dependencies and generate
     ```
 
 ## Usage
-1. convert glb files of 3D models to off (Object File Format) files:
+1. start the program and generate OUTPUT.csv result file:
     ```bash
     bash mesh-mesh-collisions.sh --input_glb ./examples/VH_F_Kidney_Left.glb
 
@@ -66,7 +66,7 @@ We use CMake to configure the program with third-party dependencies and generate
     bash mesh-mesh-collisions.sh --help
     
     ```
-2. sample result
+2. sample result OUTPUT.csv
 ```bash
 | source | target | distance ( -1 : collision )
 VH_F_renal_pyramid_L_b | VH_F_renal_pyramid_L_c | 0.00581706732973548
