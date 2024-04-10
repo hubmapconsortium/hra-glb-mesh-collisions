@@ -9,11 +9,6 @@ For Python library:
     pip install pygltflib
     ```
 
-2. trimesh
-    ```bash
-    pip install trimesh
-    ```
-
 For C++ libraries:
 
 1. [Download CGAL 5.5.3](https://github.com/CGAL/cgal/releases/download/v5.5.3/CGAL-5.5.3.zip)
@@ -63,7 +58,13 @@ We use CMake to configure the program with third-party dependencies and generate
 ## Usage
 1. convert glb files of 3D models to off (Object File Format) files:
     ```bash
-    bash mesh-mesh-collisions.sh
+    bash mesh-mesh-collisions.sh --input_glb ./examples/VH_F_Kidney_Left.glb
+
+    ```
+    For help documentation
+    ```bash
+    bash mesh-mesh-collisions.sh --help
+    
     ```
 2. sample result
 ```bash
