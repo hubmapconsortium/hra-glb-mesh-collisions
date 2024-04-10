@@ -68,18 +68,18 @@ def save_single_mesh(points, triangles, mesh_name, output_dir):
 if __name__ == "__main__":
     # input_dir = "../../ccf-releases/v1.3/models/"
     # output_dir = "../../models/plain"
-    # folder_name = "temp-model-off"
+    folder_name = "temp-model-off"
 
-    # # Check if the folder already exists, and if not, create it
-    # if not os.path.exists(folder_name):
-    #     os.mkdir(folder_name)
-    #     print(f"Temporal folder '{folder_name}' created successfully.\n")
-    # else:
-    #     print(f"Temporal folder '{folder_name}' already exists.\n")  
+    # Check if the folder already exists, and if not, create it
+    if not os.path.exists(folder_name):
+        os.mkdir(folder_name)
+        #print(f"Temporal folder '{folder_name}' created successfully.\n")
+    #else:
+        #print(f"Temporal folder '{folder_name}' already exists.\n")  
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--input_glb', type=str, help="input file path of the glb file", default="./model-glb")   #../../ccf-releases/v1.3/models/")
-    #parser.add_argument('--output_dir', type=str, help="output directory of off files", default="./temp-model-off")
+    #parser.add_argument('--output_csv', type=str, help="output directory of csv file", default="./output.csv")
     args = parser.parse_args()
 
     #print(f'{folder_name}'"\n")

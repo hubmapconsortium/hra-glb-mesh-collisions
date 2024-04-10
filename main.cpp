@@ -47,18 +47,26 @@ int main(int argc, char **argv)
     long long microseconds;
     gettimeofday(&start, nullptr);
 
-    
+
 
     // Open the CSV file for writing
     std::ofstream outputFile("output.csv");
+    
+    // Open the CSV file for writing
+    // if (argc == 2) {
+    //     std::ofstream outputFile(argv[1]);
+    // }
+
     if (!outputFile.is_open()) {
         std::cerr << "Error: Unable to open output.csv for writing." << std::endl;
         return 1;
     }
 
+    std::cout << argc << std::endl;
+    
     // Write header to CSV file
-    outputFile << "source, target, distance" << std::endl;
-  
+    outputFile << "source,target,distance" << std::endl;
+    
 
     std::vector<Mymesh> meshes;
     std::vector<std::string> meshIDs;

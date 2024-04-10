@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.9)
 project(HTTP_SERVICE)
 
 set(CMAKE_BUILD_TYPE "Release")
-set(CGAL_DIR "$ENV{HOME}/CGAL-5.5.2")
+set(CGAL_DIR "$ENV{HOME}/CGAL-5.5.3")
 
 
 find_package(CGAL REQUIRED)
