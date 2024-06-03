@@ -6,9 +6,7 @@ first_arg=$1
 second_arg=$2
 
 
-python3 glb_parser.py $first_arg $second_arg; 
-./build/compute_collision;
-
+python3 ./collision_test.py $first_arg $second_arg; 
 
 
 
