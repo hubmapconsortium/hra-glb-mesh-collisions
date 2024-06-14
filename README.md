@@ -17,12 +17,12 @@ For Python library:
 ## Usage
 1. start the program and generate OUTPUT.csv result file:
     ```bash
-    bash mesh-mesh-collisions.sh --input_glb ./examples/VH_F_Kidney_Left.glb
+    python3 mesh-mesh-collisions.py --input_glb ./examples/VH_F_Kidney_Left.glb
 
     ```
     For help documentation
     ```bash
-    bash mesh-mesh-collisions.sh --help
+    python3 mesh-mesh-collisions.py --help
     
     ```
 2. sample result OUTPUT.csv
