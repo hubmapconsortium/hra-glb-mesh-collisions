@@ -8,52 +8,11 @@ For Python library:
     ```bash
     pip install pygltflib
     ```
-
-For C++ libraries:
-
-1. [Download CGAL 5.5.3](https://github.com/CGAL/cgal/releases/download/v5.5.3/CGAL-5.5.3.zip)
-    Extract the compressed file to the '$ENV{HOME}' folder.
-
-2. CMake
+2. trimesh
     ```bash
-    sudo apt-get install build-essential libssl-dev
-    cd /tmp
-    wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz
-    tar -zxvf cmake-3.20.0.tar.gz
-    cd cmake-3.20.0
-    ./bootstrap
-    make
-    sudo make install
-    ```
-3. Boost
-    ```bash
-    sudo apt-get update
-    sudo apt-get install libboost-all-dev
-    ```
-4. GMP
-    ```bash
-    sudo apt-get install libgmp-dev
-    ```
-5. MPFR
-    ```bash
-    sudo apt-get install libmpfr-dev
-    ```
-6. Eigen3
-    ```bash
-    sudo apt install libeigen3-dev
+    pip install trimesh
     ```
 
-## Compilation
-
-We use CMake to configure the program with third-party dependencies and generate the native build system by creating a CMakeLists.txt file. 
-
-1. :
-    ```bash
-    mkdir build
-    cd build
-    cmake ..
-    make
-    ```
 
 ## Usage
 1. start the program and generate OUTPUT.csv result file:
@@ -68,15 +27,20 @@ We use CMake to configure the program with third-party dependencies and generate
     ```
 2. sample result OUTPUT.csv
 ```bash
-| source | target | distance ( -1 : collision )
-VH_F_renal_pyramid_L_b | VH_F_renal_pyramid_L_c | 0.00581706732973548
-VH_F_renal_pyramid_L_b | VH_F_renal_pyramid_L_h | 0.033958358068466095
-VH_F_renal_pyramid_L_b | VH_F_renal_pyramid_L_i | 0.036266068238102786
-VH_F_renal_pyramid_L_b | VH_F_renal_pyramid_L_k | 0.056490684201869
-VH_F_renal_pyramid_L_c | VH_F_renal_pyramid_L_h | 0.04081904008643359
-VH_F_renal_pyramid_L_c | VH_F_renal_pyramid_L_i | 0.050566784682148945
-VH_F_renal_pyramid_L_c | VH_F_renal_pyramid_L_k | 0.0653510531862599
-VH_F_renal_pyramid_L_h | VH_F_renal_pyramid_L_i | 0.0034600071016649284
-VH_F_renal_pyramid_L_h | VH_F_renal_pyramid_L_k | 0.017098977841348874
-VH_F_renal_pyramid_L_i | VH_F_renal_pyramid_L_k | 0.002434104111354548
+source,target,distance
+VHF_hilum_of_kidney_L,VHF_kidney_capsule_L,-1
+VHF_hilum_of_kidney_L,VHF_major_calyx_L_a,-1
+VHF_hilum_of_kidney_L,VHF_major_calyx_L_b,0.0014157565638410548
+VHF_hilum_of_kidney_L,VHF_major_calyx_L_c,-1
+VHF_hilum_of_kidney_L,VHF_major_calyx_L_d,-1
+VHF_hilum_of_kidney_L,VHF_minor_calyx_L_a,0.011878771067593177
+VHF_hilum_of_kidney_L,VHF_minor_calyx_L_b,0.014892350577084101
+VHF_hilum_of_kidney_L,VHF_minor_calyx_L_c,0.01049842653752553
+VHF_hilum_of_kidney_L,VHF_minor_calyx_L_d,0.013852964218697942
+VHF_hilum_of_kidney_L,VHF_minor_calyx_L_e,-1
+VHF_hilum_of_kidney_L,VHF_minor_calyx_L_f,0.0003293750826728972
+VHF_hilum_of_kidney_L,VHF_minor_calyx_L_g,0.0013917394770369632
+VHF_hilum_of_kidney_L,VHF_minor_calyx_L_h,0.002076302121193277
+VHF_hilum_of_kidney_L,VHF_minor_calyx_L_i,0.0001650410537290576
+VHF_hilum_of_kidney_L,VHF_minor_calyx_L_j,0.0026597163618629024
 ```
