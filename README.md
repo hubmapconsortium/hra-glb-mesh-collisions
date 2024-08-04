@@ -26,6 +26,9 @@ For Python library:
     
     ```
 2. sample result OUTPUT.csv
+- distance in meters
+- -1 = intersection
+- distance measured between two closest points
 ```bash
 source,target,distance
 VHF_hilum_of_kidney_L,VHF_kidney_capsule_L,-1
