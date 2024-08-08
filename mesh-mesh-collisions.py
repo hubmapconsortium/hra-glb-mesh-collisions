@@ -12,6 +12,16 @@ from trimesh.proximity import closest_point
 
 
 def glb_plain_parser(input_glb, output_off_dir):
+    """
+    Parses a GLB file and extracts the mesh data.
+
+    Args:
+        input_glb (str): The path to the GLB file.
+        output_off_dir (str): The directory to save the extracted mesh data.
+
+    Returns:
+        None
+    """
 
     data_type_dict = {5121: 'uint8', 5123: 'uint16',
                       5125: 'uint32', 5126: 'float32'}
@@ -50,6 +60,21 @@ def glb_plain_parser(input_glb, output_off_dir):
 
 
 def save_single_mesh(points, triangles, mesh_name, output_off_dir):
+    """
+    Save a single mesh in the OFF format.
+
+    Args:
+        points (list): List of points in the mesh.
+        triangles (list): List of triangles in the mesh.
+        mesh_name (str): Name of the mesh.
+        output_off_dir (str): Directory to save the mesh file.
+
+    Returns:
+        None
+
+    Raises:
+        None
+    """
 
     if not os.path.exists(output_off_dir):
         os.makedirs(output_off_dir)
@@ -72,6 +97,16 @@ def save_single_mesh(points, triangles, mesh_name, output_off_dir):
 
 
 def clean_folder(temp_off_dir):
+    """
+    Remove all files and directories within the specified directory.
+
+    Parameters:
+    - temp_off_dir (str): The path to the directory to be cleaned.
+
+    Returns:
+    None
+    """
+
     if os.path.exists(temp_off_dir):
         for filename in os.listdir(temp_off_dir):
             file_path = os.path.join(temp_off_dir, filename)
@@ -81,6 +116,16 @@ def clean_folder(temp_off_dir):
 
 
 def compute_collision(input_off_dir, output_csv):
+    """
+    Compute collisions between meshes in the given input directory and write the results to a CSV file.
+
+    Parameters:
+    - input_off_dir (str): The directory path containing the input .off files.
+    - output_csv (str): The path of the output CSV file.
+
+    Returns:
+    None
+    """
 
     # Create a pattern to match all .off files
     pattern = input_off_dir + '/*.off'
