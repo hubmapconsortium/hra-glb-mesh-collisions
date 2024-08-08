@@ -1,35 +1,59 @@
 # hra-glb-mesh-collisions
-A CLI to extract mesh-mesh collision information from GLB files
+
+A command-line interface to extract mesh-mesh collision information from GLB files
 
 ## Dependencies
 
-For Python library:
-1. pygltflib
-    ```bash
-    pip install pygltflib
-    ```
-2. trimesh
-    ```bash
-    pip install trimesh
-    ```
+System packages:
 
+You may need to install libfcl liboctomap if the program does not work right away using this command (on Ubuntu):
+
+```bash
+$ sudo apt install liboctomap-dev libfcl-dev
+```
+
+For Python library:
+
+1. pygltflib
+2. trimesh
+
+Install python dependencies with:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
-1. start the program and generate OUTPUT.csv result file:
-    ```bash
-    python3 mesh-mesh-collisions.py --input_glb ./examples/VH_F_Kidney_Left.glb
 
-    ```
-    For help documentation
-    ```bash
-    python3 mesh-mesh-collisions.py --help
-    
-    ```
-2. sample result OUTPUT.csv
-- distance in meters
+Example usage:
+
+```bash
+python3 mesh-mesh-collisions.py ./examples/VH_F_Kidney_Left.glb collision_result.csv
+```
+
+For help documentation:
+
+```bash
+$ python3 mesh-mesh-collisions.py --help
+
+usage: mesh-mesh-collisions.py [-h] input_glb output_csv
+
+positional arguments:
+input_glb   path to input glb file
+output_csv  path to output collisions csv file
+
+options:
+-h, --help  show this help message and exit
+```
+
+Sample result ouptut csv:
+
+Notes about the distance colum:
+- distance is in meters
 - -1 = intersection
 - distance measured between two closest points
-```bash
+
+```csv
 source,target,distance
 VHF_hilum_of_kidney_L,VHF_kidney_capsule_L,-1
 VHF_hilum_of_kidney_L,VHF_major_calyx_L_a,-1
