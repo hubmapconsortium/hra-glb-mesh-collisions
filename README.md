@@ -36,14 +36,16 @@ For help documentation:
 ```bash
 $ python3 mesh-mesh-collisions.py --help
 
-usage: mesh-mesh-collisions.py [-h] input_glb output_csv
+usage: mesh-mesh-collisions.py [-h] [--include-distances] [-v] input_glb output_csv
 
 positional arguments:
-input_glb   path to input glb file
-output_csv  path to output collisions csv file
+  input_glb            path to input glb file
+  output_csv           path to output collisions csv file
 
 options:
--h, --help  show this help message and exit
+  -h, --help           show this help message and exit
+  --include-distances  include distances even if they dont' colide
+  -v, --verbose
 ```
 
 Sample result ouptut csv:
