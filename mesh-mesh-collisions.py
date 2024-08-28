@@ -20,8 +20,7 @@ def glb_plain_parser(input_glb, output_off_dir, verbose=False):
         output_off_dir (str): Directory to save the extracted OFF files.
         verbose (bool): If True, print detailed information during processing.
     """
-    data_type_dict = {5121: 'uint8', 5123: 'uint16',
-                      5125: 'uint32', 5126: 'float32'}
+    data_type_dict = {5121: "uint8", 5123: "uint16", 5125: "uint32", 5126: "float32"}
 
     glb = GLTF2.load(input_glb)
     binary_blob = glb.binary_blob()
@@ -34,8 +33,11 @@ def glb_plain_parser(input_glb, output_off_dir, verbose=False):
         dtype = data_type_dict[triangles_accessor.componentType]
 
         triangles = np.frombuffer(
-            binary_blob[triangles_buffer_view.byteOffset + triangles_accessor.byteOffset:
-                        triangles_buffer_view.byteOffset + triangles_buffer_view.byteLength],
+            binary_blob[
+                triangles_buffer_view.byteOffset
+                + triangles_accessor.byteOffset : triangles_buffer_view.byteOffset
+                + triangles_buffer_view.byteLength
+            ],
             dtype=dtype,
             count=triangles_accessor.count,
         ).reshape((-1, 3))
@@ -45,14 +47,16 @@ def glb_plain_parser(input_glb, output_off_dir, verbose=False):
         dtype = data_type_dict[points_accessor.componentType]
 
         points = np.frombuffer(
-            binary_blob[points_buffer_view.byteOffset + points_accessor.byteOffset:
-                        points_buffer_view.byteOffset + points_buffer_view.byteLength],
+            binary_blob[
+                points_buffer_view.byteOffset
+                + points_accessor.byteOffset : points_buffer_view.byteOffset
+                + points_buffer_view.byteLength
+            ],
             dtype=dtype,
             count=points_accessor.count * 3,
         ).reshape((-1, 3))
 
-        save_single_mesh(points, triangles, mesh_name,
-                         output_off_dir, verbose)
+        save_single_mesh(points, triangles, mesh_name, output_off_dir, verbose)
 
 
 def save_single_mesh(points, triangles, mesh_name, output_off_dir, verbose=False):
@@ -69,9 +73,9 @@ def save_single_mesh(points, triangles, mesh_name, output_off_dir, verbose=False
     if not os.path.exists(output_off_dir):
         os.makedirs(output_off_dir)
 
-    output_path = os.path.join(output_off_dir, mesh_name + '.off')
+    output_path = os.path.join(output_off_dir, mesh_name + ".off")
 
-    with open(output_path, 'w') as f:
+    with open(output_path, "w") as f:
         f.write("OFF\n")
         f.write("{} {} 0\n".format(len(points), len(triangles)))
 
@@ -79,12 +83,14 @@ def save_single_mesh(points, triangles, mesh_name, output_off_dir, verbose=False
             f.write("{} {} {}\n".format(point[0], point[1], point[2]))
 
         for triangle in triangles:
-            f.write("3 {} {} {}\n".format(
-                triangle[0], triangle[1], triangle[2]))
+            f.write("3 {} {} {}\n".format(triangle[0], triangle[1], triangle[2]))
 
         if verbose:
-            print("  {} has {} points, {} triangle faces".format(
-                mesh_name, len(points), len(triangles)))
+            print(
+                "  {} has {} points, {} triangle faces".format(
+                    mesh_name, len(points), len(triangles)
+                )
+            )
 
 
 def clean_folder(temp_off_dir, create_dir=False):
@@ -106,7 +112,9 @@ def clean_folder(temp_off_dir, create_dir=False):
         os.mkdir(temp_off_dir)
 
 
-def compute_collision(input_off_dir, output_csv, include_distances=False, verbose=False):
+def compute_collision(
+    input_off_dir, output_csv, include_distances=False, verbose=False
+):
     """
     Computes collisions between meshes and saves the results to a CSV file.
 
@@ -117,7 +125,7 @@ def compute_collision(input_off_dir, output_csv, include_distances=False, verbos
         verbose (bool): If True, print detailed information during processing.
     """
     # Create a pattern to match all .off files
-    pattern = input_off_dir + '/*.off'
+    pattern = input_off_dir + "/*.off"
     # Use glob to find all files in the folder that match the pattern
     off_files = list(sorted(glob.glob(pattern)))
     meshes = []
@@ -126,20 +134,20 @@ def compute_collision(input_off_dir, output_csv, include_distances=False, verbos
 
     for off_file in off_files:
         # Extract the filename without the path and extension
-        file_name = os.path.basename(off_file).replace('.off', '')
-        mesh = trimesh.load(off_file, file_type='off')
+        file_name = os.path.basename(off_file).replace(".off", "")
+        mesh = trimesh.load(off_file, file_type="off")
         meshes.append(mesh)
         file_names.append(file_name)
         manager.add_object(file_name, mesh)
 
-    with open(output_csv, 'w', newline='') as file:
+    with open(output_csv, "w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(['source', 'target', 'distance'])
+        writer.writerow(["source", "target", "distance"])
 
         collisions, collided = manager.in_collision_internal(return_names=True)
         if collisions:
             for mesh_a, mesh_b in collided:
-                writer.writerow([mesh_a, mesh_b, '-1'])
+                writer.writerow([mesh_a, mesh_b, "-1"])
 
         if include_distances:
             collided = list(map(lambda x: tuple(sorted(x)), collided))
@@ -153,28 +161,33 @@ def compute_collision(input_off_dir, output_csv, include_distances=False, verbos
                         v1, v2 = meshes[i].vertices, meshes[j].vertices
                         tree2 = cKDTree(v2)
                         dists12, _ = tree2.query(v1, k=1)
-                        writer.writerow(
-                            [file_names[i], file_names[j], min(dists12)])
+                        writer.writerow([file_names[i], file_names[j], min(dists12)])
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--include-distances', action='store_true',
-                        help="include distances even if they dont' colide")
-    parser.add_argument('-v', '--verbose', action='store_true')
-    parser.add_argument('input_glb', help="path to input glb file")
     parser.add_argument(
-        'output_csv', help="path to output collisions csv file")
+        "--include-distances",
+        action="store_true",
+        help="include distances even if they dont' colide",
+    )
+    parser.add_argument("-v", "--verbose", action="store_true")
+    parser.add_argument("input_glb", help="path to input glb file")
+    parser.add_argument("output_csv", help="path to output collisions csv file")
 
     args = parser.parse_args()
     input_glb = args.input_glb
     output_csv = args.output_csv
-    temp_off_dir = args.output_csv + '__temp'
+    temp_off_dir = args.output_csv + "__temp"
 
     clean_folder(temp_off_dir, True)
 
     glb_plain_parser(input_glb, temp_off_dir, verbose=args.verbose)
-    compute_collision(temp_off_dir, output_csv,
-                      include_distances=args.include_distances, verbose=args.verbose)
+    compute_collision(
+        temp_off_dir,
+        output_csv,
+        include_distances=args.include_distances,
+        verbose=args.verbose,
+    )
 
     clean_folder(temp_off_dir)
