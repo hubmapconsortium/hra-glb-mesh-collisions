@@ -1,6 +1,24 @@
-# hra-glb-mesh-collisions
+# hra_glb_mesh_collisions
 
-A command-line interface to extract mesh-mesh collision information from GLB files
+[![PyPI - Version](https://img.shields.io/pypi/v/hra-glb-mesh-collisions.svg)](https://pypi.org/project/hra-glb-mesh-collisions)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/hra-glb-mesh-collisions.svg)](https://pypi.org/project/hra-glb-mesh-collisions)
+
+-----
+
+## Table of Contents
+
+- [Installation](#installation)
+- [License](#license)
+
+## Installation
+
+```console
+pip install hra-glb-mesh-collisions
+```
+
+## License
+
+`hra-glb-mesh-collisions` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
 
 ## Dependencies
 

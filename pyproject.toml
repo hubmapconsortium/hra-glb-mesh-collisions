@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling", "hatch-requirements-txt"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hra-glb-mesh-collisions"
+dynamic = ["version", "dependencies"]
+description = 'A command-line interface to extract mesh-mesh collision information from GLB files'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Bruce W. Herr II", email = "bherr@iu.edu" },
+]
+
+[tool.hatch.version]
+path = "src/hra_glb_mesh_collisions/__about__.py"
+
+[tool.hatch.metadata.hooks.requirements_txt]
+files = ["requirements.txt"]
+
+[project.scripts]
+hra-glb-mesh-collisions = "hra_glb_mesh_collisions:main"
