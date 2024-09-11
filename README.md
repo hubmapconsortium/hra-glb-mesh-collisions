@@ -7,8 +7,12 @@
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [License](#license)
+- [hra\_glb\_mesh\_collisions](#hra_glb_mesh_collisions)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [License](#license)
+  - [Dependencies](#dependencies)
+  - [Usage](#usage)
 
 ## Installation
 

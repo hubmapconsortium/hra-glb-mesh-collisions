@@ -9,10 +9,21 @@ description = 'A command-line interface to extract mesh-mesh collision informati
 readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
-keywords = []
+keywords = ["glb", "collision detection"]
 authors = [
+  { name = "Chenran Li", email = "chenran.li@stonybrook.edu" },
   { name = "Bruce W. Herr II", email = "bherr@iu.edu" },
 ]
+maintainers = [
+  { name = "Bruce W. Herr II", email = "bherr@iu.edu" },
+]
+
+[project.urls]
+Homepage = "https://github.com/hubmapconsortium/hra-glb-mesh-collisions"
+Documentation = "https://github.com/hubmapconsortium/hra-glb-mesh-collisions"
+Repository = "https://github.com/hubmapconsortium/hra-glb-mesh-collisions.git"
+Issues = "https://github.com/hubmapconsortium/hra-glb-mesh-collisions/issues"
+Changelog = "https://github.com/hubmapconsortium/hra-glb-mesh-collisions/blob/main/CHANGELOG.md"
 
 [tool.hatch.version]
 path = "src/hra_glb_mesh_collisions/__about__.py"
